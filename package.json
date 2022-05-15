@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Ilia Chernetskii <ilya.chernetsky@gmail.com>",
   "scripts": {
+    "prod:start": "cross-env NODE_ENV=production ts-node index.ts",
     "prod": "yarn && pm2 start ecosystem.config.js",
     "dev": "nodemon --watch \"**\" --ext \"ts,json\" --exec \"ts-node index.ts\""
   },

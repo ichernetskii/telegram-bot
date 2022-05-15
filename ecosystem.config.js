@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         name: "telegram-bot",
-        script: "yarn run prod",
+        script: "yarn run prod:start",
         error_file: "err.log",
         out_file: "out.log",
         log_file: "combined.log",
