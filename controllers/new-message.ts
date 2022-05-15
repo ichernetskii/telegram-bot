@@ -1,10 +1,13 @@
 import axios from "axios";
 import {Request, Response} from "express";
+import {config} from "dotenv";
+config();
 
 const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 export const sendMessage = async (req: Request, res: Response) => {
     const { message } = req.body;
+    console.log(TELEGRAM_URI);
 
     const messageText = message?.text?.toLowerCase()?.trim();
     const chatId = message?.chat?.id;
@@ -15,13 +18,13 @@ export const sendMessage = async (req: Request, res: Response) => {
     let responseText = "I have nothing to say.";
 
     try {
-        await axios.post(TELEGRAM_URI, {
+        const telegramResponse = await axios.post(TELEGRAM_URI, {
             chat_id: chatId,
             text: responseText,
         });
         res.send("Done");
     } catch (e) {
-        console.error(e);
+        console.error(e.response.data); //?
         res.send(e);
     }
 }

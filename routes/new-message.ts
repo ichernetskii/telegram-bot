@@ -3,7 +3,7 @@ import {sendMessage} from "../controllers/new-message";
 const router = Router();
 
 router.post(
-    "/new-message",
+    "/message",
     sendMessage,
 )
 
